@@ -6,6 +6,8 @@ const List = ({ addFood }) => {
   useEffect(() => {
     if (addFood) {
       setListFood([...listFood, addFood]);
+    } else {
+      setListFood([]);
     }
   }, [addFood]); //Se ejecuta cada vez que listFood cambie
 
@@ -16,14 +18,20 @@ const List = ({ addFood }) => {
   return (
     <div className="list-table">
       <h2>Food List:</h2>
-      {listFood ? (
-        <div className="row-table">
-          <p>Name: {listFood.food}</p>
-          <p>Quantity = {listFood.quantity}</p>
-          {/* Agrega más campos según la estructura de tu objeto */}
-        </div>
+      {listFood.length > 0 ? ( // ¿Hay comidas en la lista?
+        listFood.map(
+          (
+            foodItem,
+            index // Recorre cada comida
+          ) => (
+            <div key={index} className="row-table">
+              <p>Nombre: {foodItem.food}</p>
+              <p>Cantidad: {foodItem.quantity}</p>
+            </div>
+          )
+        )
       ) : (
-        <p>No se ha agregado ninguna comida.</p>
+        <p>No se ha agregado ninguna comida.</p> // Si no hay comidas, muestra este mensaje
       )}
     </div>
   );
