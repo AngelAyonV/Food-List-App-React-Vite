@@ -11,9 +11,7 @@ const List = ({ addFood }) => {
     }
   }, [addFood]); //Se ejecuta cada vez que listFood cambie
 
-  useEffect(() => {
-    console.log(listFood);
-  }, [listFood]); //Se ejecuta cada vez que listFood cambie)
+  useEffect(() => {}, [listFood]); //Se ejecuta cada vez que listFood cambie)
 
   return (
     <div className="list-table">
@@ -25,8 +23,8 @@ const List = ({ addFood }) => {
             index // Recorre cada comida
           ) => (
             <div key={index} className="row-table">
-              <p>Nombre: {foodItem.food}</p>
-              <p>Cantidad: {foodItem.quantity}</p>
+              <p>Name: {foodItem.food}</p>
+              <p>Quantity: {foodItem.quantity}</p>
             </div>
           )
         )

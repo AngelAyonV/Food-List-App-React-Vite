@@ -19,14 +19,16 @@ const FoodListApp = () => {
   };
 
   const btnAddFood = () => {
+    if (!food.trim() || !quantityFood.trim()) {
+      alert("Please fill out both fields");
+      return;
+    }
     // Añade el nuevo alimento al estado
     let addFoodNew = { food: food, quantity: quantityFood };
-    // console.log(addFoodNew);
     setaddFood(addFoodNew);
     // Limpia los input para el próximo alimento
     setfood("");
     setquantityFood("");
-    console.log(addFood);
   };
 
   return (
@@ -35,6 +37,7 @@ const FoodListApp = () => {
       <h2>It be created with React + Vite</h2>
       <div className="input-text-search">
         <input
+          className="input-name-search"
           type="text"
           placeholder="New food"
           value={food}
@@ -42,6 +45,7 @@ const FoodListApp = () => {
           // onKeyDown={handleKeyDown}
         />
         <input
+          className="input-quantity"
           type="number"
           placeholder="Quantity of food"
           value={quantityFood}
